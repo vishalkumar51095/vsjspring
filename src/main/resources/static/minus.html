@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minus Two Number</title>
+    <script>
+        function f1()
+        {
+        var xhr=new XMLHttpRequest();//Create a new XMLHttpRequest object for accessing the server
+        xhr.open("GET","http://localhost:889/Minus?num1=65&num2=87&command=Minus",true);//Open the request
+        //Give the request method, request url and request type. true for async, false for sync
+        xhr.onreadystatechange=function(){f2(xhr);};//Assign the callback. readyState variable is updated when the
+        //request progress
+        //1-Connected, 2 -Request Sent,  3- Response starts receiving, 4- Response complete
+        xhr.send();
+        }
+        function f2(xhr)
+        {
+        if(xhr.readyState!=4)
+        return;
+        var result=xhr.responseText;
+        alert(result);
+        document.getElementById("p").innerHTML=xhr.responseText;
+        }
+
+    </script>
+</head>
+<body>
+<form action="/Minus">
+    <input type="text" id="num1" name="num1"><br><br>
+    <input type="text" id="num2" name="num2"><br><br>
+    <input type="button" name="command" value="Add" onclick="f1()">
+    <input type="submit" name="command" value="Minus" onclick=f1"()">
+    <p id="p"> </p>
+</form>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Minus Two Number</title>
+  <script>
+        function f1()
+        {
+        var xhr=new XMLHttpRequest();//Create a new XMLHttpRequest object for accessing the server
+        var x1=document.getElementById("num1").value;
+        var x2=document.getElementById("num2").value;
+        xhr.open("GET","http://localhost:889/Minus?num1=" + x1 + "&num2=" + x2 +"&command=Minus",true);//Open the request
+       // xhr.open("GET","http://localhost:889/Add?num1=65&num2=87&command=Add",true);
+        //Give the request method, request url and request type. true for async, false for sync
+        xhr.onreadystatechange=function(){f2(xhr);};//Assign the callback. readyState variable is updated when theS
+        //request progress
+        //1-Connected, 2 -Request Sent,  3- Response starts receiving, 4- Response complete
+        xhr.send();
+        }
+             function f3()
+        {
+        var xhr=new XMLHttpRequest();//Create a new XMLHttpRequest object for accessing the server
+        var x1=document.getElementById("num1").value;
+        var x2=document.getElementById("num2").value;
+        xhr.open("GET","http://localhost:889/Add?num1=" + x1 + "&num2=" + x2 +"&command=Minus",true);
+        xhr.onreadystatechange=function(){f2(xhr);};
+         xhr.send();
+        }
+
+        function f2(xhr)
+        {
+        if(xhr.readyState!=4)
+        return;
+        var result=xhr.responseText;
+        alert(result);
+        document.getElementById("p").innerHTML=xhr.responseText;
+        }
+
+    </script>
+</head>
+<body>
+<form action="/Minus">
+  <input type="text" id="num1" name="num1"><br><br>
+  <input type="text" id="num2" name="num2"><br><br>
+  <button type="button" name="command" value="Add" onclick="f3()">Add</button>
+  <button type="button" name="command" value="Minus" onclick="f1()">Minus</button>
+  <p id="p"> </p>
+</form>
+</body>
+</html>

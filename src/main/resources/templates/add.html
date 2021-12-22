@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="'first, ' + ${first} + '!'"></p>
+<p th:text="'second, ' + ${second} + '!'"></p>
+<p th:text="'Add, ' + ${add} + '!'"></p>
+<table border = "1">
+    <tr>
+        <th>First</th>
+        <th>Second</th>
+        <th>Add</th>
+    </tr>
+    <tr>
+        <td><p th:text=" ${first} "></p></td>
+        <td><p th:text="${second} "></p></td>
+        <td><p th:text="${add} "></p></td>
+    </tr>
+</table>
+</body>
+</html>
